@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MathsLearningGame</string>
+    <string name="game_title">Math Your Way</string>
+    <string name="button_start">Start</string>
 </resources>
