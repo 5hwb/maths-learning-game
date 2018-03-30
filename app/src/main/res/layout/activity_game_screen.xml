@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="apps.perry.mathslearninggame.GameScreen">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView_question"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
+        android:gravity="center"
+        android:text="(x-7)(x+5)"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/answer1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="x-7+x+5"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/answer2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="x^2+2x+35"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/answer3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="x^2+12x+35"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/answer4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="x^2-2x-35"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:textSize="20sp" />
+
+</LinearLayout>

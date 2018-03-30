@@ -24,8 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:padding="20dp"
         android:layout_marginBottom="64dp"
+        android:onClick="startGame"
+        android:padding="20dp"
         android:text="@string/button_start"
         android:textSize="28sp" />
 
