@@ -3,9 +3,8 @@ package apps.perry.mathslearninggame.backend;
 import java.util.Random;
 
 /**
- * A QuestionGenerator generates a question for the Maths Learning Game. It can provide different
- * types of questions which are implemented by
- * QuestionGenerators use the java.util.Random class to randomly generate numbers for use in Questions.
+ * A QuestionGenerator randomly generates questions and answers for use in a Question
+ * using the java.util.Random class.
  * @author perry
  *
  */

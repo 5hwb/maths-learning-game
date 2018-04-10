@@ -1,7 +1,8 @@
 package apps.perry.mathslearninggame.backend;
 
 /**
- * Generate a complete question using a QuestionGenerator of your choice
+ * A Question is a container representing a particular type of question format, such as
+ * multiple choice. Any QuestionGenerator can be used to generate the questions and answers.
  * @author perry
  *
  */

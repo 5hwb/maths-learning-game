@@ -1,7 +1,7 @@
 package apps.perry.mathslearninggame.backend;
 
 /**
- * Implementation of a 'fill-it-in' question
+ * Question - 'fill-it-in' implementation
  * @author perry
  *
  */

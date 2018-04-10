@@ -1,7 +1,7 @@
 package apps.perry.mathslearninggame.backend;
 
 /**
- * Implementation of a multiple choice question
+ * Question - Multiple choice implementation
  * @author perry
  *
  */

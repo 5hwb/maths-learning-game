@@ -1,7 +1,7 @@
 package apps.perry.mathslearninggame.backend;
 
 /**
- * Implementation that generates basic math questions
+ * QuestionGenerator - Basic math function implementation
  * @author perry
  *
  */

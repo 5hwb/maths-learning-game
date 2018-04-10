@@ -1,7 +1,7 @@
 package apps.perry.mathslearninggame.backend;
 
 /**
- * Implementation that generates polynomial questions
+ * QuestionGenerator - Polynomial implementation
  * @author perry
  *
  */
