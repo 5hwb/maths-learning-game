@@ -75,12 +75,12 @@ public class GameScreen extends AppCompatActivity {
                             // Set background and text colours for all answer buttons
                             for (int i = 0; i < textViews.length; i++) {
                                 textViews[i].setBackgroundResource(R.drawable.button_background);
-                                textViews[i].setTextColor(0x000000);
+                                textViews[i].setTextColor(0xFF000000);
                             }
 
                             // Set background and text colours for the selected answer button
                             tv.setBackgroundResource(R.drawable.button_background_selected);
-                            tv.setTextColor(0xFFFFFF);
+                            ((TextView) v).setTextColor(0xFFFFFFFF);
                         }
                     });
                 }
@@ -117,16 +117,23 @@ public class GameScreen extends AppCompatActivity {
 
     }
 
+    /**
+     * Get the player's answer and check if it is correct
+     * @param v
+     */
     public void checkAnswer(View v) {
+        recordedAnswer = recordedAnswer.replace("x2", "x²"); // replace normal 2 with superscript tool (TEMP HACK FOR NOW)
         boolean answerIsCorrect = recordedAnswer.equals(correctAnswer);
 
-        String messageAnswerCorrect = String.format("Correct answer! %s", correctAnswer);
-        String messageAnswerWrong = String.format("Wrong answer! %s", correctAnswer);
+        String titleAnswerCorrect = "Correct!";
+        String titleAnswerWrong = "Wrong!";
+
+        String message = String.format("The correct answer is %s", correctAnswer);
 
         // 1. Instantiate the dialog builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage((answerIsCorrect) ? messageAnswerCorrect : messageAnswerWrong)
-                .setTitle(R.string.dialog_title);
+        builder.setMessage(message)
+                .setTitle((answerIsCorrect) ? titleAnswerCorrect : titleAnswerWrong);
 
         // Add continue button
         builder.setPositiveButton(R.string.dialog_continue, new DialogInterface.OnClickListener() {
