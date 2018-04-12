@@ -2,4 +2,7 @@
     <string name="app_name">MathsLearningGame</string>
     <string name="game_title">Math Your Way</string>
     <string name="button_start">Start</string>
+    <string name="dialog_message">Message</string>
+    <string name="dialog_title">Answer checked</string>
+    <string name="dialog_continue">Continue</string>
 </resources>

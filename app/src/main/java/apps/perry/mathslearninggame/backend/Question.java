@@ -1,21 +1,32 @@
 package apps.perry.mathslearninggame.backend;
 
+import java.util.ArrayList;
+
 /**
- * A Question is a container representing a particular type of question format, such as
- * multiple choice. Any QuestionGenerator can be used to generate the questions and answers.
+ * A Question contains a question and the possible answers to the question.
  * @author perry
  *
  */
-public abstract class Question {
-	QuestionGenerator qg;
+public class Question {
+	private String q;
+	private ArrayList<String> a;
+	private QuestionFormatType qft;
 	
-	public Question(QuestionType qt) {
-		switch (qt) {
-		case POLYNOMIAL: qg = new PolynomialQuestionGenerator(); break;
-		case BASIC:      qg = new BasicQuestionGenerator(); break;
-		default: System.out.println("Error - invalid question type");
-		}
+	public Question(String q, ArrayList<String> a, QuestionFormatType qft) {
+		this.q = q;
+		this.a = a;
+		this.qft = qft;
 	}
 	
-	public abstract void generateQuestion();
+	public String question() {
+		return this.q;
+	}
+	
+	public ArrayList<String> answers() {
+		return this.a;
+	}
+	
+	public QuestionFormatType type() {
+		return this.qft;
+	}
 }

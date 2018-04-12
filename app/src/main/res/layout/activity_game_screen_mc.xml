@@ -27,12 +27,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:padding="4dp"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:clickable="true"
             android:gravity="center"
-            android:text="x-7 + x+5"
+            android:padding="4dp"
+            android:text="x-7+x+5"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="28sp" />
@@ -42,12 +42,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:padding="4dp"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:clickable="true"
             android:gravity="center"
-            android:text="x^2 +2x +35"
+            android:padding="4dp"
+            android:text="x²+2x+35"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="28sp" />
@@ -64,12 +64,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:padding="4dp"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:clickable="true"
             android:gravity="center"
-            android:text="x^2 +12x +35"
+            android:padding="4dp"
+            android:text="x²+12x+35"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="28sp" />
@@ -79,22 +79,23 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:padding="4dp"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:clickable="true"
             android:gravity="center"
-            android:text="x^2 -2x -35"
+            android:padding="4dp"
+            android:text="x²-2x-35"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="28sp" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/button_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="switchView"
+        android:onClick="checkAnswer"
         android:text="Continue"
-        android:textSize="20sp" />
+        android:textSize="28sp" />
 
 </LinearLayout>

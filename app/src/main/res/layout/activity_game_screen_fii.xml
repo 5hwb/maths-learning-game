@@ -16,18 +16,22 @@
         android:textSize="36sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/answer_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
+        android:hint="Answer here"
         android:inputType="textPersonName"
-        android:text="Answer" />
+        android:textSize="28sp" />
 
     <Button
+        android:id="@+id/button_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="switchView"
+        android:onClick="checkAnswer"
         android:text="Continue"
-        android:textSize="20sp" />
+        android:textSize="28sp" />
 
 </LinearLayout>

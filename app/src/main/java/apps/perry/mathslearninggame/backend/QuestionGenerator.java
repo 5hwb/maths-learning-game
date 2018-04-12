@@ -1,10 +1,12 @@
 package apps.perry.mathslearninggame.backend;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * A QuestionGenerator randomly generates questions and answers for use in a Question
- * using the java.util.Random class.
+ * A QuestionGenerator randomly generates a question and its corresponding answers for use in
+ * a QuestionFormat using the java.util.Random class. Subclasses of QuestionGenerator specialise
+ * on a certain type of questions (e.g. polynomial factorisation).
  * @author perry
  *
  */
@@ -30,11 +32,11 @@ public abstract class QuestionGenerator {
 	public abstract String question();
 	
 	/**
-	 * Generate the answer.
+	 * Generate the answers.
 	 * Note: results are undefined if question() has not been called yet!
 	 * @return The resulting answer
 	 */
-	public abstract String answer();
+	public abstract ArrayList<String> answers();
 	
 	/**
 	 * Generate a random number in a range between a minimum and maximum value
