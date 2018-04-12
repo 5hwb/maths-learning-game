@@ -17,9 +17,9 @@ public class BasicQuestionGenerator extends QuestionGenerator {
 	
 	@Override
 	protected void generateNumbers() {
-		a = randomInteger(1,9);
-		b = randomInteger(1,9);
-		c = randomInteger(1,9);
+		a = randomInteger(-9,9);
+		b = randomInteger(-9,9);
+		c = randomInteger(-9,9);
 	}
 	
 	@Override

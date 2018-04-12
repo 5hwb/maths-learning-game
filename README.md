@@ -4,5 +4,5 @@ This is a simple game for Android that tests the player's knowledge of mathemati
 
 ## TODO
 
-* Make class diagram
-* Implement classes
+* Add a score system
+* Add more question generators for more question varieties (surds, factorials etc)

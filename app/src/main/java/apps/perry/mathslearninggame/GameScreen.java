@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 import apps.perry.mathslearninggame.backend.Question;
 import apps.perry.mathslearninggame.backend.QuestionFormatType;
@@ -23,6 +26,9 @@ import static apps.perry.mathslearninggame.R.id.answer4;
 
 public class GameScreen extends AppCompatActivity {
 
+    /** Random number generator */
+    protected Random r;
+
     QuestionManager qm;
     String correctAnswer;
     String recordedAnswer;
@@ -31,6 +37,7 @@ public class GameScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen_mc);
+        r = new Random();
         qm = new QuestionManager();
         loadQuestion(null);
     }
@@ -56,16 +63,17 @@ public class GameScreen extends AppCompatActivity {
                 textViews[1] = (TextView) findViewById(answer2);
                 textViews[2] = (TextView) findViewById(answer3);
                 textViews[3] = (TextView) findViewById(answer4);
-
                 question.setText(q.question());
-                textViews[0].setText(answers.get(0));
-                textViews[1].setText(answers.get(1));
-                textViews[2].setText(answers.get(2));
-                textViews[3].setText(answers.get(3));
-                correctAnswer = answers.get(0);
 
-                // Set up click listeners for each button to record their answer
+                // Shuffle a copy of the list of answers to be used for final display
+                List<String> shuffledAnswers = new ArrayList<String>(answers);
+                Collections.shuffle(shuffledAnswers);
+
                 for (int i = 0; i < 4; i++) {
+                    // Set the button answer display
+                    textViews[i].setText(shuffledAnswers.get(i));
+
+                    // Set up click listeners for each button to record their answer
                     textViews[i].setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -90,31 +98,27 @@ public class GameScreen extends AppCompatActivity {
                 question = (TextView) findViewById(R.id.textView_question);
                 question.setText(q.question());
 
+                // Set the recorded answer after the user finishes entering it
                 EditText et = (EditText) findViewById(R.id.answer_edittext);
                 et.addTextChangedListener(new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
                     @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                    }
-
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
                     @Override
                     public void afterTextChanged(Editable editable) {
                         recordedAnswer = editable.toString();
                     }
                 });
 
-                correctAnswer = answers.get(0);
                 break;
             default:
                 setContentView(R.layout.activity_game_screen_mc);
                 break;
         }
 
+        // The correct answer is always 1st in the list of possible answers
+        correctAnswer = answers.get(0);
     }
 
     /**
@@ -145,5 +149,16 @@ public class GameScreen extends AppCompatActivity {
         // 3. Get the AlertDialog from create()
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    /**
+     * Generate a random number in a range between a minimum and maximum value
+     * @param min Minimum value
+     * @param max Maximum value
+     * @return A random number
+     */
+    private int randomInteger(int min, int max) {
+        int randomNum = r.nextInt((max - min) + 1) + min;
+        return randomNum;
     }
 }

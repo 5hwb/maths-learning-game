@@ -17,10 +17,10 @@ public class PolynomialQuestionGenerator extends QuestionGenerator {
 	
 	@Override
 	protected void generateNumbers() {
-		a = randomInteger(1,5);
-		b = randomInteger(1,5);
-		c = randomInteger(1,5);
-		d = randomInteger(1,5);
+		a = randomInteger(-5,5);
+		b = randomInteger(-5,5);
+		c = randomInteger(-5,5);
+		d = randomInteger(-5,5);
 	}
 	
 	@Override
