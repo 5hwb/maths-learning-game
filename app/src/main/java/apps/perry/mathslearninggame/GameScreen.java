@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,19 +20,29 @@ import apps.perry.mathslearninggame.backend.Question;
 import apps.perry.mathslearninggame.backend.QuestionFormatType;
 import apps.perry.mathslearninggame.backend.QuestionManager;
 
+import static android.R.attr.y;
+import static android.os.Build.VERSION_CODES.N;
 import static apps.perry.mathslearninggame.R.id.answer1;
 import static apps.perry.mathslearninggame.R.id.answer2;
 import static apps.perry.mathslearninggame.R.id.answer3;
 import static apps.perry.mathslearninggame.R.id.answer4;
+import static apps.perry.mathslearninggame.R.id.button;
 
 public class GameScreen extends AppCompatActivity {
 
     /** Random number generator */
     protected Random r;
 
+    /** Manages the list of questions to be shown to the player */
     QuestionManager qm;
+
+    /** Stores the correct answer and the user's recorded answer */
     String correctAnswer;
     String recordedAnswer;
+
+    /** Common GUI elements */
+    TextView question;
+    Button buttonContinue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +62,9 @@ public class GameScreen extends AppCompatActivity {
         Question q = qm.giveMeAQuestion();
         QuestionFormatType qft = q.type();
         ArrayList<String> answers = q.answers();
-        TextView question;
 
         // Set up the UI depending on the question type
+        // TODO split this up into their own subclasses of a future 'GUIBuilder' interface
         switch (qft) {
             case MULTIPLE_CHOICE:
                 setContentView(R.layout.activity_game_screen_mc);
@@ -64,6 +75,7 @@ public class GameScreen extends AppCompatActivity {
                 textViews[2] = (TextView) findViewById(answer3);
                 textViews[3] = (TextView) findViewById(answer4);
                 question.setText(q.question());
+                buttonContinue = (Button) findViewById(R.id.button_continue);
 
                 // Shuffle a copy of the list of answers to be used for final display
                 List<String> shuffledAnswers = new ArrayList<String>(answers);
@@ -89,6 +101,10 @@ public class GameScreen extends AppCompatActivity {
                             // Set background and text colours for the selected answer button
                             tv.setBackgroundResource(R.drawable.button_background_selected);
                             ((TextView) v).setTextColor(0xFFFFFFFF);
+
+                            // Enable the continue button
+                            buttonContinue.setClickable(true);
+                            buttonContinue.setAlpha(1.0f);
                         }
                     });
                 }
@@ -97,9 +113,11 @@ public class GameScreen extends AppCompatActivity {
                 setContentView(R.layout.activity_game_screen_fii);
                 question = (TextView) findViewById(R.id.textView_question);
                 question.setText(q.question());
+                EditText et = (EditText) findViewById(R.id.answer_edittext);
+                buttonContinue = (Button) findViewById(R.id.button_continue);
+                buttonContinue.setClickable(false);
 
                 // Set the recorded answer after the user finishes entering it
-                EditText et = (EditText) findViewById(R.id.answer_edittext);
                 et.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -108,6 +126,10 @@ public class GameScreen extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable editable) {
                         recordedAnswer = editable.toString();
+
+                        // Enable the continue button
+                        buttonContinue.setClickable(true);
+                        buttonContinue.setAlpha(1.0f);
                     }
                 });
 
@@ -119,6 +141,10 @@ public class GameScreen extends AppCompatActivity {
 
         // The correct answer is always 1st in the list of possible answers
         correctAnswer = answers.get(0);
+
+        // By default, the continue button is disabled before the player selects their answer
+        buttonContinue.setClickable(false);
+        buttonContinue.setAlpha(0.5f);
     }
 
     /**
