@@ -150,15 +150,4 @@ public class GameScreen extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-    /**
-     * Generate a random number in a range between a minimum and maximum value
-     * @param min Minimum value
-     * @param max Maximum value
-     * @return A random number
-     */
-    private int randomInteger(int min, int max) {
-        int randomNum = r.nextInt((max - min) + 1) + min;
-        return randomNum;
-    }
 }
