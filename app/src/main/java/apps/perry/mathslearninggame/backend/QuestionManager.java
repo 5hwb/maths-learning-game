@@ -13,11 +13,14 @@ public class QuestionManager {
 	int currQuestionIndex = -1;
 	
 	public QuestionManager() {
+	    // TODO put this information in an external file
 		questions = new ArrayList<QuestionFormat>();
     	questions.add(new MCQuestionFormat(QuestionType.POLYNOMIAL));
-    	questions.add(new MCQuestionFormat(QuestionType.BASIC));
+		questions.add(new MCQuestionFormat(QuestionType.BASIC));
+		questions.add(new MCQuestionFormat(QuestionType.SURD));
     	questions.add(new FIIQuestionFormat(QuestionType.POLYNOMIAL));
-    	questions.add(new FIIQuestionFormat(QuestionType.BASIC));
+		questions.add(new FIIQuestionFormat(QuestionType.BASIC));
+		questions.add(new FIIQuestionFormat(QuestionType.SURD));
 	}
 	
 	/**

@@ -12,9 +12,10 @@ public abstract class QuestionFormat {
 	
 	public QuestionFormat(QuestionType qt) {
 		switch (qt) {
-		case POLYNOMIAL: qg = new PolynomialQuestionGenerator(); break;
-		case BASIC:      qg = new BasicQuestionGenerator(); break;
-		default: System.out.println("Error - invalid question type");
+			case POLYNOMIAL: qg = new PolynomialQuestionGenerator(); break;
+			case BASIC:      qg = new BasicQuestionGenerator(); break;
+			case SURD:       qg = new SurdQuestionGenerator(); break;
+			default: System.out.println("Error - invalid question type");
 		}
 	}
 	
