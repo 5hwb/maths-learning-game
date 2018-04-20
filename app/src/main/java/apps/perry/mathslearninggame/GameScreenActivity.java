@@ -159,7 +159,7 @@ public class GameScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen_mc);
         r = new Random();
-        qm = new QuestionManager();
+        qm = QuestionManager.getInstance();
         loadQuestion(null);
     }
 
