@@ -1,5 +1,6 @@
 package apps.perry.mathslearninggame;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,17 +22,11 @@ import java.util.Random;
 import apps.perry.mathslearninggame.backend.Question;
 import apps.perry.mathslearninggame.backend.QuestionFormatType;
 import apps.perry.mathslearninggame.backend.QuestionManager;
-import apps.perry.mathslearninggame.backend.QuestionType;
 
-import static android.R.attr.y;
-import static android.os.Build.VERSION_CODES.N;
 import static apps.perry.mathslearninggame.R.id.answer1;
 import static apps.perry.mathslearninggame.R.id.answer2;
 import static apps.perry.mathslearninggame.R.id.answer3;
 import static apps.perry.mathslearninggame.R.id.answer4;
-import static apps.perry.mathslearninggame.R.id.button;
-import static apps.perry.mathslearninggame.backend.QuestionFormatType.FILL_IT_IN;
-import static apps.perry.mathslearninggame.backend.QuestionFormatType.MULTIPLE_CHOICE;
 
 public class GameScreenActivity extends AppCompatActivity {
 
@@ -58,7 +55,10 @@ public class GameScreenActivity extends AppCompatActivity {
 
         @Override
         public void loadScreen(Question qu) {
-            setContentView(R.layout.activity_game_screen_mc);
+            setContentView(R.layout.activity_game_screen_base);
+            FrameLayout placeHolder = (FrameLayout) findViewById(R.id.answer);
+            getLayoutInflater().inflate(R.layout.activity_game_screen_mc, placeHolder);
+
             question = (TextView) findViewById(R.id.textView_question);
             final TextView[] textViews = new TextView[4];
             textViews[0] = (TextView) findViewById(answer1);
@@ -107,7 +107,10 @@ public class GameScreenActivity extends AppCompatActivity {
 
         @Override
         public void loadScreen(Question qu) {
-            setContentView(R.layout.activity_game_screen_fii);
+            setContentView(R.layout.activity_game_screen_base);
+            FrameLayout placeHolder = (FrameLayout) findViewById(R.id.answer);
+            getLayoutInflater().inflate(R.layout.activity_game_screen_fii, placeHolder);
+
             question = (TextView) findViewById(R.id.textView_question);
             question.setText(qu.question());
             EditText et = (EditText) findViewById(R.id.answer_edittext);
@@ -157,7 +160,7 @@ public class GameScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_screen_mc);
+        setContentView(R.layout.activity_game_screen_base);
         r = new Random();
         qm = QuestionManager.getInstance();
         loadQuestion(null);
