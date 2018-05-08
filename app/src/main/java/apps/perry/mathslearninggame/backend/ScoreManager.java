@@ -27,8 +27,16 @@ public class ScoreManager {
     }
 
     /**
+     * Get the game score
+     * @return Score
+     */
+    public long score() {
+       return m_score;
+    }
+
+    /**
      * Add val to the score
-     * @param val
+     * @param val The amount to add to the score
      */
     public void addScore(long val) {
         if (val >= 0) m_score += val;
@@ -36,9 +44,16 @@ public class ScoreManager {
 
     /**
      * Subtract val from the score
-     * @param val
+     * @param val The amount to subtract from the score
      */
     public void subtractScore(long val) {
         if (val >= 0) m_score -= val;
+    }
+
+    /**
+     * Reset the score value to 0
+     */
+    public void resetScore() {
+        m_score = 0;
     }
 }

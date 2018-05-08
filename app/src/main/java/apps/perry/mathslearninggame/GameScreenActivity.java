@@ -14,6 +14,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,6 +24,7 @@ import java.util.Random;
 import apps.perry.mathslearninggame.backend.Question;
 import apps.perry.mathslearninggame.backend.QuestionFormatType;
 import apps.perry.mathslearninggame.backend.QuestionManager;
+import apps.perry.mathslearninggame.backend.ScoreManager;
 
 import static apps.perry.mathslearninggame.R.id.answer1;
 import static apps.perry.mathslearninggame.R.id.answer2;
@@ -41,7 +44,7 @@ public class GameScreenActivity extends AppCompatActivity {
     String recordedAnswer;
 
     /** Common GUI elements */
-    TextView question;
+    TextView score, question;
     Button buttonContinue;
 
     /** This interface represents a group of inner classes used for building the user interface */
@@ -59,6 +62,8 @@ public class GameScreenActivity extends AppCompatActivity {
             FrameLayout placeHolder = (FrameLayout) findViewById(R.id.answer);
             getLayoutInflater().inflate(R.layout.activity_game_screen_mc, placeHolder);
 
+            score = (TextView) findViewById(R.id.textView_score);
+            score.setText(Long.toString(ScoreManager.getInstance().score()));
             question = (TextView) findViewById(R.id.textView_question);
             final TextView[] textViews = new TextView[4];
             textViews[0] = (TextView) findViewById(answer1);
@@ -111,6 +116,8 @@ public class GameScreenActivity extends AppCompatActivity {
             FrameLayout placeHolder = (FrameLayout) findViewById(R.id.answer);
             getLayoutInflater().inflate(R.layout.activity_game_screen_fii, placeHolder);
 
+            score = (TextView) findViewById(R.id.textView_score);
+            score.setText(Long.toString(ScoreManager.getInstance().score()));
             question = (TextView) findViewById(R.id.textView_question);
             question.setText(qu.question());
             EditText et = (EditText) findViewById(R.id.answer_edittext);
@@ -195,13 +202,17 @@ public class GameScreenActivity extends AppCompatActivity {
     public void checkAnswer(View v) {
         recordedAnswer = recordedAnswer.replace("x2", "x²"); // replace normal 2 with superscript tool (TEMP HACK FOR NOW)
         boolean answerIsCorrect = recordedAnswer.equals(correctAnswer);
-
         String titleAnswerCorrect = "Correct!";
         String titleAnswerWrong = "Wrong!";
-
         String message = String.format("The correct answer is %s", correctAnswer);
 
-        // 1. Instantiate the dialog builder
+        // Update score
+        if (answerIsCorrect)
+            ScoreManager.getInstance().addScore(50);
+        else
+            ScoreManager.getInstance().subtractScore(100);
+
+        // Instantiate the dialog builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
                 .setTitle((answerIsCorrect) ? titleAnswerCorrect : titleAnswerWrong);
@@ -213,7 +224,7 @@ public class GameScreenActivity extends AppCompatActivity {
             }
         });
 
-        // 3. Get the AlertDialog from create()
+        // Get the AlertDialog from create()
         AlertDialog dialog = builder.create();
         dialog.show();
     }

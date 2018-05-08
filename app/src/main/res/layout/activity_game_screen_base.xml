@@ -5,9 +5,11 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:text="00"
         android:textSize="28sp" />
 
