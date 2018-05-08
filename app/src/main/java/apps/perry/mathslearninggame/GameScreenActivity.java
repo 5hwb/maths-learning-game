@@ -149,7 +149,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 case FILL_IT_IN:
                     gb = new GUIBuilderFII();
                     break;
-                default:
+                default: // default GUI = multiple choice
                     gb = new GUIBuilderMC();
                     break;
             }
